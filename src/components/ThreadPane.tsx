@@ -118,7 +118,7 @@ export function ThreadPane(props: {
           </div>
 
           <div className="about-favicon">
-            <img src="/app-icon.png" alt="llm-group-chat" />
+            <img src={`${import.meta.env.BASE_URL}app-icon.png`} alt="llm-group-chat" />
           </div>
 
 
