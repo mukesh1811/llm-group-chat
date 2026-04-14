@@ -105,9 +105,22 @@ export function ThreadPane(props: {
         />
 
         <div className="thread-body about-body">
+          <div className="about-link-row about-top-links">
+            <a href="https://github.com/mukesh1811/llm-group-chat" target="_blank" rel="noreferrer">
+              Git Repo
+            </a>
+            <a href="https://github.com/sponsors/mukesh1811/" target="_blank" rel="noreferrer">
+              Support me here
+            </a>
+            <a href="https://github.com/mukesh1811/llm-group-chat/issues" target="_blank" rel="noreferrer">
+              Request a feature or report a bug
+            </a>
+          </div>
+
           <div className="about-favicon">
             <img src="/app-icon.png" alt="llm-group-chat" />
           </div>
+
 
           <DetailSection title="What it does">
             <p>
@@ -136,37 +149,17 @@ export function ThreadPane(props: {
             </ul>
           </DetailSection>
 
-          <DetailSection title="Architecture">
+          <DetailSection title="How it works">
             <ul className="about-list">
-              <li>Runtime: React 18 with Vite, running entirely in the browser with no sign-in flow and no backend.</li>
-              <li>Prompt handling: each buddy carries its own system prompt, while each group chat contributes the shared topic and recent transcript used to ground replies.</li>
-              <li>Model routing: OpenRouter-backed buddy generation and model catalog loading happen directly from the browser using your key for the current tab.</li>
-              <li className="about-link-row">
-                More
-                <a href="https://github.com/mukesh1811/llm-group-chat" target="_blank" rel="noreferrer">
-                  Git Repo
-                </a>
-                .
-                <a href="https://github.com/sponsors/mukesh1811/" target="_blank" rel="noreferrer">
-                  Support me here
-                </a>
-                .
-                <a href="https://github.com/mukesh1811/llm-group-chat/issues" target="_blank" rel="noreferrer">
-                  Request a feature or report a bug
-                </a>
-              </li>
+              <li>Runs entirely in the browser — no sign-in, no backend, nothing leaves your machine unless a buddy sends a prompt to OpenRouter.</li>
+              <li>Each buddy carries its own system prompt. When a room conversation happens, the room&apos;s topic and recent messages are included as context for every reply.</li>
+              <li>All model requests go through OpenRouter using the API key you provide.</li>
             </ul>
             <div className="about-subsection">
               <h4>Privacy</h4>
               <ul className="about-list">
-                <li>
-                  Browser save for workspace and buddies: *ON*.
-                  <br />
-                  Buddies, group chats, and message history persist locally in this browser only.
-                </li>
-                <li>Browser save for your OpenRouter key: *OFF*.
-                  <br />
-                  The app does NO SAVE AT ALL for the key and keeps it only in memory for the current tab.</li>
+                <li>Buddies, rooms, and message history are saved in this browser&apos;s local storage. Nothing is synced to a server.</li>
+                <li>Your OpenRouter key is held in memory only for the current tab. It is never written to storage and is cleared on refresh.</li>
               </ul>
             </div>
           </DetailSection>
@@ -723,8 +716,8 @@ function BuddyEditorPane(props: {
         title={isCreate ? 'Create an AI buddy' : 'Edit AI buddy'}
         summary={
           isCreate
-            ? 'Define the role, responsibilities, model, and operating prompt inline.'
-            : 'Update the role, responsibilities, model, and operating prompt inline.'
+            ? 'Define the role, responsibilities, model, and system prompt inline.'
+            : 'Update the role, responsibilities, model, and system prompt inline.'
         }
       />
 

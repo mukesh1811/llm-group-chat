@@ -181,6 +181,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  overflow-y: auto;
 }
 
 .pane-header {
@@ -762,6 +763,13 @@ button {
 .about-body>.detail-section:first-child {
   padding-top: 0;
   border-top: none;
+}
+
+.about-top-links {
+  justify-content: center;
+  padding: 0.25rem 0 0;
+  list-style: none;
+  font-size: 0.82rem;
 }
 
 .about-favicon {

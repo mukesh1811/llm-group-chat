@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useRef, useState, type ReactNode } from 'react'
-import { initials } from '../lib/format'
 import type { Buddy, Chat, WorkspaceState } from '../types'
 
 export type SidebarMode = 'buddies' | 'chats' | 'info'
@@ -241,16 +240,6 @@ export function InfoPane(props: {
         </div>
       </div>
 
-      <div className="profile-block">
-        <div className="workspace-user">
-          <div className="avatar avatar-user">{initials(props.workspace.user.name)}</div>
-          <div>
-            <strong>{props.workspace.user.name}</strong>
-            <span>{props.workspace.user.email}</span>
-          </div>
-        </div>
-      </div>
-
       <div className="stats-grid">
         <StatCard label="Buddies" value={String(props.workspace.buddies.length)} />
         <StatCard label="Group chats" value={String(props.workspace.chats.length)} />
@@ -263,12 +252,12 @@ export function InfoPane(props: {
         </div>
 
         <label className="info-settings-field">
-          <span>API key</span>
+          <span>API key — <a href="https://openrouter.ai/" target="_blank" rel="noreferrer">get it here</a></span>
           <input
             ref={openRouterKeyInputRef}
             type="password"
             value={openRouterKeyDraft}
-            placeholder={hasOpenRouterApiKey ? 'Replace saved key' : 'sk-or-v1-...'}
+            placeholder={hasOpenRouterApiKey ? 'Replace key' : 'sk-or-v1-...'}
             autoComplete="off"
             spellCheck={false}
             onChange={(event) => setOpenRouterKeyDraft(event.target.value)}
@@ -276,7 +265,7 @@ export function InfoPane(props: {
         </label>
 
         <div className="info-settings-copy">
-          <p>Key is not saved. If you refresh, it is cleared and must be reentered for the next session.</p>
+          <p>Key is not saved. If you refresh, it is cleared and must be re-entered for the next session.</p>
         </div>
 
         <div className="info-settings-actions">
@@ -292,7 +281,7 @@ export function InfoPane(props: {
               try {
                 await props.onSaveOpenRouterApiKey(openRouterKeyDraft)
                 setOpenRouterKeyDraft('')
-              } catch {}
+              } catch { }
             }}
           >
             {props.isSavingOpenRouterKey ? 'Checking...' : 'Use key'}
@@ -309,11 +298,22 @@ export function InfoPane(props: {
               try {
                 await props.onClearOpenRouterApiKey()
                 setOpenRouterKeyDraft('')
-              } catch {}
+              } catch { }
             }}
           >
             Clear key
           </button>
+        </div>
+      </section>
+
+      <section className="info-settings">
+        <div className="info-settings-head">
+          <strong>Reset workspace</strong>
+        </div>
+        <div className="info-settings-copy">
+          <p>This will delete all buddy and chat info from browser storage.</p>
+        </div>
+        <div className="info-settings-actions">
           <button className="ghost-button subtle" type="button" onClick={props.onResetWorkspace}>
             Reset local workspace
           </button>
