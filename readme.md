@@ -1,6 +1,6 @@
 # llm-group-chat
 <p align="center">
-  <img src="public/favicon.svg" width="128" height="128" />
+  <img src="public/app-icon.png" width="320" />
 </p>
 
 is a private, local-first multi-llm chat app that lets create multiple llms with individual roles and responsibilities and converse with them in one group chat room.

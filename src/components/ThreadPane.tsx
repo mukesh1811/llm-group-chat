@@ -105,6 +105,10 @@ export function ThreadPane(props: {
         />
 
         <div className="thread-body about-body">
+          <div className="about-favicon">
+            <img src="/app-icon.png" alt="llm-group-chat" />
+          </div>
+
           <DetailSection title="What it does">
             <p>
               Create AI buddies with distinct roles and prompts, group them into rooms

@@ -764,6 +764,19 @@ button {
   border-top: none;
 }
 
+.about-favicon {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0;
+}
+
+.about-favicon img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  border-radius: 12px;
+}
+
 .detail-fact,
 .detail-room-card {
   border: none;
